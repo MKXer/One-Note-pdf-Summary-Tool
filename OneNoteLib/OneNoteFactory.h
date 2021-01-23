@@ -9,24 +9,24 @@ namespace OneNote
 	{
 	public:
 
-		std::unique_ptr<HtmlElement> h1() const
+		std::unique_ptr<HtmlElement> h1(QString const& text) const
 		{
-			return std::make_unique<H1>();
+			return std::make_unique<H1>(text);
 		}
 
-		std::unique_ptr<HtmlElement> h2() const
+		std::unique_ptr<HtmlElement> h2(QString const& text) const
 		{
-			return std::make_unique<H2>();
+			return std::make_unique<H2>(text);
 		}
 
-		std::unique_ptr<HtmlElement> h3() const
+		std::unique_ptr<HtmlElement> h3(QString const& text) const
 		{
-			return std::make_unique<H3>();
+			return std::make_unique<H3>(text);
 		}
 
-		std::unique_ptr<HtmlElement> importantText() const
+		std::unique_ptr<HtmlElement> importantText(QString const& text) const
 		{
-			return std::make_unique<ImportantText>();
+			return std::make_unique<ImportantText>(text);
 		}
 
 		static Factory const& factory()

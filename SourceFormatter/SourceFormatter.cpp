@@ -62,17 +62,17 @@ void SourceFormatter::checkForNewCodeAndFormatIt()
 void SourceFormatter::formatHeadLine(QString const& code)
 {
 	const auto factory = OneNoteLib::factory();
-	std::unique_ptr<OneNoteTextElement> element;
+	std::unique_ptr<OneNote::HtmlElement> element;
 
 
 	if (ui.H1_RB->isChecked()){
-		element = std::move(factory.H1());
+		element = std::move(factory.h1(code));
 	}
 	else if (ui.H2_RB->isChecked()){
-		element = std::move(factory.H2());
+		element = std::move(factory.h2(code));
 	}
 	else if (ui.H3_RB->isChecked()){
-		element = std::move(factory.H3());
+		element = std::move(factory.h3(code));
 	}
 	else if (ui.HT_RB->isChecked()) {
 		element = std::move(factory.importantText());
@@ -80,7 +80,7 @@ void SourceFormatter::formatHeadLine(QString const& code)
 
 
 	if(element)
-		QMetaObject::invokeMethod(this, "insertHtmlCodeIntoClipboard", Qt::QueuedConnection, Q_ARG(QString const&, element->getHtml(code)));
+		QMetaObject::invokeMethod(this, "insertHtmlCodeIntoClipboard", Qt::QueuedConnection, Q_ARG(QString const&, element->getHtml()));
 }
 
 QString const& SourceFormatter::getCodeLanguageStringForHighlights( const CodeLanguage lang )

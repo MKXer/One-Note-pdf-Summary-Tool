@@ -14,6 +14,9 @@ namespace OneNote
 
 		}
 
+		virtual const QString getHtml() const = 0;
+
+
 	protected:
 		virtual QString const& getHtmlCode() const = 0;
 
@@ -41,7 +44,6 @@ namespace OneNote
 	class Image : public HtmlElement
 	{
 	public:
-
 		Image(QString const& imagePath, ushort width, ushort height) : HtmlElement(),
 			imagePath(imagePath),
 			width(width),
@@ -50,7 +52,7 @@ namespace OneNote
 
 		}
 
-		QString getHtml() const {
+		const QString getHtml() const {
 			return getHtmlCode().arg(imagePath).arg(width).arg(height);
 		}
 
@@ -70,8 +72,9 @@ namespace OneNote
 	class Text : public HtmlElement
 	{
 	public:
-		Text(QString const& htmlTag = "p", float fontSize = 11.0f, QColor const& color = QColor::fromRgb(255, 255, 255)) :
+		Text(QString const& text, QString const& htmlTag = "p", float fontSize = 11.0f, QColor const& color = QColor::fromRgb(255, 255, 255)) :
 			HtmlElement(),
+			text(text),
 			htmlTag(htmlTag),
 			fontSize(fontSize),
 			color(color)
@@ -79,11 +82,10 @@ namespace OneNote
 
 		}
 
-		QString getHtml(QString const& text) const {
+		const QString getHtml() const {
 			return getHtmlCode().arg(text).arg(htmlTag).arg(fontSize).arg(color.name());
 		}
 
-	
 	private:
 		virtual QString const& getHtmlCode() const {
 			static const QString html = getDefaultHtmlCode().arg(
@@ -93,6 +95,7 @@ namespace OneNote
 			return html;
 		}
 
+		const QString text;
 		const QString htmlTag;
 		const float fontSize;
 		const QColor color;
@@ -103,7 +106,7 @@ namespace OneNote
 	{
 	public:
 
-		H1() : Text("h1", 15, QColor("#1E4E79"))
+		H1(QString const& text) : Text(text, "h1", 15, QColor("#1E4E79"))
 		{
 
 		}
@@ -114,7 +117,7 @@ namespace OneNote
 	{
 	public:
 
-		H2() : Text("h2", 14, QColor("#69A4D8"))
+		H2(QString const& text) : Text(text, "h2", 14, QColor("#69A4D8"))
 		{
 
 		}
@@ -123,7 +126,7 @@ namespace OneNote
 	class H3 : public Text
 	{
 	public:
-		H3() : Text("h3", 12, QColor("#5B9BD5"))
+		H3(QString const& text) : Text(text, "h3", 12, QColor("#5B9BD5"))
 		{
 
 		}
@@ -133,7 +136,7 @@ namespace OneNote
 	{
 	public:
 
-		ImportantText() : Text("p", 16)
+		ImportantText(QString const& text) : Text(text, "p", 16)
 		{
 
 		}

@@ -9,9 +9,9 @@ public:
     OneNoteLib();
 
 
-    static Factory const& factory()
+    static OneNote::Factory const& factory()
     {
-        return Factory::factory();
+        return OneNote::Factory::factory();
     }
 
 };
