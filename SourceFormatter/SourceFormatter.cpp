@@ -5,43 +5,41 @@ SourceFormatter::SourceFormatter(QWidget *parent)
 {
     ui.setupUi(this);
 
-	connect(ui.CLIPBOARD_BTN, &QPushButton::clicked, this, &SourceFormatter::switchClipboardWatcherState);
-	connect(clipboard, &QClipboard::dataChanged, this, &SourceFormatter::checkForNewCodeAndFormatIt);
+	connect(ui.CLIPBOARD_BTN, &QPushButton::clicked,   this, &SourceFormatter::switchClipboardWatcherState);
+	connect(clipboard,		 &QClipboard::dataChanged, this, &SourceFormatter::checkForNewCodeAndFormatIt );
 }
 
 void SourceFormatter::switchClipboardWatcherState()
 {
 	shouldWatchClipboard = !shouldWatchClipboard;
-	ui.CLIPBOARD_BTN->setText(shouldWatchClipboard ? "Watch Clipboard ON" : "Watch Clipboard OFF");
+	ui.CLIPBOARD_BTN->setText( BUTTON_LABEL[shouldWatchClipboard] );
 }
 
-
-QString SourceFormatter::makeCodeBeautiful(QString const& codeSnippet, const CodeLanguage lang)
+const QString SourceFormatter::makeCodeBeautiful(QString const& codeSnippet, const CodeLanguage language) const
 {
 	QString retn;
 
-	if (lang != XML) {
-		QString const& langString = getCodeLanguageStringForAstyle(lang);
-		retn = beautifier.makeCodeBeautiful(codeSnippet, langString);
+	if (language != XML) {
+		QString const& languageString = getCodeLanguageStringForAstyle(language);
+		retn = beautifier.makeCodeBeautiful(codeSnippet, languageString);
 	}
 
 	return retn;
 }
 
-QString SourceFormatter::makeCodeHtmlHighlighted(QString const& codeSnippet, const CodeLanguage lang)
+const QString SourceFormatter::makeCodeHtmlHighlighted(QString const& codeSnippet, const CodeLanguage language) const
 {
-	QString const& langString = getCodeLanguageStringForHighlights(lang);
+	QString const& languageString = getCodeLanguageStringForHighlights(language);
 		
-	return highlighter.highlight(codeSnippet, langString);
+	return highlighter.highlight(codeSnippet, languageString);
 }
 
 void SourceFormatter::checkForNewCodeAndFormatIt()
 {
 	if (shouldWatchClipboard && !clipboard->ownsClipboard() ) {
-		QString source = QApplication::clipboard()->text();
-
-		if ( !source.isEmpty() ) {
-
+		
+		if (QString source = 
+			QApplication::clipboard()->text(); !source.isEmpty() ) {
 
 			if (ui.OFF_RB->isChecked()) {
 				const CodeLanguage lang = SourceFormatter::detectCodeLanguage(source);
@@ -52,45 +50,41 @@ void SourceFormatter::checkForNewCodeAndFormatIt()
 				QMetaObject::invokeMethod(this, "insertHtmlCodeIntoClipboard", Qt::QueuedConnection, Q_ARG(QString const&, source));
 			}
 			else
-				formatHeadLine(source);
+				formatHeadLineAndPutItIntoClipboard(source);
 		}
 	}
 }
 
-
-
-void SourceFormatter::formatHeadLine(QString const& code)
+void SourceFormatter::formatHeadLineAndPutItIntoClipboard(QString const& text)
 {
 	const auto factory = OneNoteLib::factory();
 	std::unique_ptr<OneNote::HtmlElement> element;
 
-
 	if (ui.H1_RB->isChecked()){
-		element = std::move(factory.h1(code));
+		element = std::move(factory.h1(text));
 	}
 	else if (ui.H2_RB->isChecked()){
-		element = std::move(factory.h2(code));
+		element = std::move(factory.h2(text));
 	}
 	else if (ui.H3_RB->isChecked()){
-		element = std::move(factory.h3(code));
+		element = std::move(factory.h3(text));
 	}
 	else if (ui.HT_RB->isChecked()) {
-		element = std::move(factory.importantText());
+		element = std::move(factory.importantText(text));
 	}
-
 
 	if(element)
 		QMetaObject::invokeMethod(this, "insertHtmlCodeIntoClipboard", Qt::QueuedConnection, Q_ARG(QString const&, element->getHtml()));
 }
 
-QString const& SourceFormatter::getCodeLanguageStringForHighlights( const CodeLanguage lang )
+QString const& SourceFormatter::getCodeLanguageStringForHighlights( CodeLanguage language) const
 {
-	return highlighterLangOptions[lang];
+	return highlighterLangOptions[language];
 }
 
-QString const& SourceFormatter::getCodeLanguageStringForAstyle( const CodeLanguage lang )
+QString const& SourceFormatter::getCodeLanguageStringForAstyle( CodeLanguage language) const
 {
-	return astyleLangOptions[lang];
+	return astyleLangOptions[language];
 }
 
 SourceFormatter::CodeLanguage SourceFormatter::detectCodeLanguage(QString const& source)
@@ -118,7 +112,5 @@ void SourceFormatter::insertHtmlCodeIntoClipboard(QString const& htmlCode)
 	QMimeData* mimeData = new QMimeData;
 	mimeData->setHtml(htmlCode);
 
-
 	clipboard->setMimeData(mimeData);
-
 }

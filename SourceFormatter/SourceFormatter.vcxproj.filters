@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Out-Of-Process">
       <UniqueIdentifier>{36daba72-45a2-46f6-a9a7-b86df1354619}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Out-Of-Process">
+      <UniqueIdentifier>{206d242d-be37-4a2f-8f98-31dcbf2c6a16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="SourceFormatter.qrc">
@@ -33,12 +36,6 @@
     <QtUic Include="SourceFormatter.ui">
       <Filter>Resource Files</Filter>
     </QtUic>
-    <QtMoc Include="SourceFormatter.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="SourceFormatter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,19 +47,27 @@
     <ClCompile Include="SourceHighlighter.cpp">
       <Filter>Source Files\Out-Of-Process</Filter>
     </ClCompile>
-    <ClCompile Include="SourceBeautifier.cpp">
+    <ClCompile Include="SourceFormatter.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceBeautifier.cpp">
+      <Filter>Source Files\Out-Of-Process</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SourceHighlighter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SourceLangDetector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SourceBeautifier.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Out-Of-Process</Filter>
     </ClInclude>
+    <ClInclude Include="SourceHighlighter.h">
+      <Filter>Header Files\Out-Of-Process</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="SourceFormatter.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

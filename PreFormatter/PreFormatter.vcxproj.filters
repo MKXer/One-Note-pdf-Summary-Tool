@@ -22,6 +22,24 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Header Files\Annotation">
+      <UniqueIdentifier>{6bcaad42-b2f9-4cfd-bfc7-3b56c295cfb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Annotation">
+      <UniqueIdentifier>{96411a79-8dc7-4825-a9ad-a19392c46b84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Summary">
+      <UniqueIdentifier>{d15ea21c-ec2d-4f8f-9b71-3d0fc0cac75d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Summary">
+      <UniqueIdentifier>{a94c20b0-eeda-4052-be7e-894109aea2a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Summary\Elements">
+      <UniqueIdentifier>{667adba5-57d7-454e-a695-30e9089d8223}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Summary\Elements">
+      <UniqueIdentifier>{d0b41edd-9ed5-4067-aabc-c60cd73c64aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="PreFormatter.qrc">
@@ -41,5 +59,67 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Annotation.cpp">
+      <Filter>Source Files\Annotation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnnotationFactory.cpp">
+      <Filter>Source Files\Annotation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnnotationList.cpp">
+      <Filter>Source Files\Annotation</Filter>
+    </ClCompile>
+    <ClCompile Include="SummaryCreator.cpp">
+      <Filter>Source Files\Summary</Filter>
+    </ClCompile>
+    <ClCompile Include="AnnotationExtractor.cpp">
+      <Filter>Source Files\Annotation</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadLine.cpp">
+      <Filter>Source Files\Summary\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\Summary\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Sentence.cpp">
+      <Filter>Source Files\Summary\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Summary.cpp">
+      <Filter>Source Files\Summary\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="SummaryElement.cpp">
+      <Filter>Source Files\Summary\Elements</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Annotation.h">
+      <Filter>Header Files\Annotation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnnotationFactory.h">
+      <Filter>Header Files\Annotation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnnotationList.h">
+      <Filter>Header Files\Annotation</Filter>
+    </ClInclude>
+    <ClInclude Include="SummaryCreator.h">
+      <Filter>Header Files\Summary</Filter>
+    </ClInclude>
+    <ClInclude Include="AnnotationExtractor.h">
+      <Filter>Header Files\Annotation</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadLine.h">
+      <Filter>Header Files\Summary\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\Summary\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Sentence.h">
+      <Filter>Header Files\Summary\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Summary.h">
+      <Filter>Header Files\Summary\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="SummaryElement.h">
+      <Filter>Header Files\Summary\Elements</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ SourceBeautifier::SourceBeautifier()
 	consoleApp.setProgram(consolePath);
 }
 
-QString SourceBeautifier::makeCodeBeautiful(QString const& codeSnippet, QString const& lang) const
+const QString SourceBeautifier::makeCodeBeautiful(QString const& codeSnippet, QString const& lang) const
 {
 	QStringList arguments;
 	arguments << "--mode=" + lang << "--style=google" << tempFilePath;
@@ -19,7 +19,7 @@ QString SourceBeautifier::makeCodeBeautiful(QString const& codeSnippet, QString 
 	return readCodeFromFile();
 }
 
-QString SourceBeautifier::readCodeFromFile() const
+const QString SourceBeautifier::readCodeFromFile() const
 {
 	QFile file(tempFilePath);
 	QString retn;

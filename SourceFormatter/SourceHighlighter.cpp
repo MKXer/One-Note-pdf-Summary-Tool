@@ -8,18 +8,18 @@ SourceHighlighter::SourceHighlighter()
 	consoleApp.setProgram(consolePath);
 }
 
-QString SourceHighlighter::highlight(QString const& codeSnippet, QString const& lang) const
+const QString SourceHighlighter::highlight(QString const& codeSnippet, QString const& lang) const
 {
+	QStringList arguments { "-S" , lang };
 
-	QStringList arguments;
-	arguments << "-S" << lang << defaultArguments;
+	arguments << defaultArguments;
 
 	consoleApp.setArguments(arguments);
 	consoleApp.start();
 	consoleApp.waitForFinished();
 
-	QString output(consoleApp.readAllStandardOutput());
-	QString error(consoleApp.readAllStandardError());
+	const QString output(consoleApp.readAllStandardOutput());
+	const QString error(consoleApp.readAllStandardError());
 
 
 	return output;

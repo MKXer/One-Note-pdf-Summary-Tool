@@ -24,6 +24,9 @@
     <Filter Include="Source Files\Factory">
       <UniqueIdentifier>{1ffb8957-f519-4e64-aa0c-5359eabcc17d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\FactoryElement">
+      <UniqueIdentifier>{0cb162c3-4be0-45e1-a02f-04cec004e579}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="onenotelib_global.h">
@@ -38,13 +41,40 @@
     <ClInclude Include="OneNoteFactory.h">
       <Filter>Source Files\Factory</Filter>
     </ClInclude>
-    <ClInclude Include="OneNoteElement.h">
-      <Filter>Source Files\FactoryElements</Filter>
+    <ClInclude Include="Headline.h">
+      <Filter>Header Files\FactoryElement</Filter>
+    </ClInclude>
+    <ClInclude Include="HtmlElement.h">
+      <Filter>Header Files\FactoryElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\FactoryElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files\FactoryElement</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportantText.h">
+      <Filter>Header Files\FactoryElement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OneNoteFactory.cpp">
       <Filter>Source Files\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\FactoryElements</Filter>
+    </ClCompile>
+    <ClCompile Include="HtmlElement.cpp">
+      <Filter>Source Files\FactoryElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\FactoryElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Headline.cpp">
+      <Filter>Source Files\FactoryElements</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportantText.cpp">
+      <Filter>Source Files\FactoryElements</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

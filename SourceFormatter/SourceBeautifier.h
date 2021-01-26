@@ -11,15 +11,15 @@ class SourceBeautifier
 
 public:
 	explicit SourceBeautifier();
-	QString makeCodeBeautiful(QString const& codeSnippet, QString const& lang) const;
+	const QString makeCodeBeautiful(QString const& codeSnippet, QString const& lang) const;
 
 private:
-	QString readCodeFromFile() const;
+	const QString readCodeFromFile() const;
 	void saveCodeToFile(QString const& codeSnippet) const;
 
 	mutable QProcess consoleApp;
 
-	const QString appDirPath = QCoreApplication::applicationDirPath();
+	const QString appDirPath   = QCoreApplication::applicationDirPath();
 	const QString tempFilePath = appDirPath + "/source.txt";
 	const QString consolePath  = appDirPath + "/astyle/AStyle.exe";
 };

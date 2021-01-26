@@ -20,28 +20,20 @@ public:
     SourceFormatter(QWidget *parent = Q_NULLPTR);
 
 
-    CodeLanguage detectCodeLanguage(QString const& source);
-
-
-public slots:
-
-    void formatHeadLine(QString const& code);
-    void switchClipboardWatcherState();
-
-
 protected slots:
 	void insertHtmlCodeIntoClipboard(QString const& htmlCode);
     void checkForNewCodeAndFormatIt();
-
-
+	void formatHeadLineAndPutItIntoClipboard(QString const& text);
+	void switchClipboardWatcherState();
 
 private:
-    QString makeCodeBeautiful(QString const& codeSnippet, const CodeLanguage lang);
-    QString makeCodeHtmlHighlighted(QString const& codeSnippet, const CodeLanguage lang);
+	const QString makeCodeBeautiful(QString const& codeSnippet, const CodeLanguage language) const;
+	const QString makeCodeHtmlHighlighted(QString const& codeSnippet, const CodeLanguage language) const;
 
-    QString const& getCodeLanguageStringForHighlights(const CodeLanguage lang);
-    QString const& getCodeLanguageStringForAstyle(const CodeLanguage lang);
+    QString const& getCodeLanguageStringForHighlights( CodeLanguage language) const;
+    QString const& getCodeLanguageStringForAstyle( CodeLanguage language) const;
 
+	CodeLanguage detectCodeLanguage(QString const& source);
 
     Ui::SourceFormatterClass ui;
 
@@ -65,5 +57,5 @@ private:
 			{XML, "xml"},
 	};
 
-
+	const QStringList BUTTON_LABEL { "Watch Clipboard ON", "Watch Clipboard OFF" };
 };

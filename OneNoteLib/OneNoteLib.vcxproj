@@ -45,6 +45,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -98,12 +99,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="OneNoteElement.h" />
+    <ClCompile Include="Headline.cpp" />
+    <ClCompile Include="ImportantText.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClInclude Include="Headline.h" />
+    <ClInclude Include="HtmlElement.h" />
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="ImportantText.h" />
     <ClInclude Include="OneNoteFactory.h" />
     <ClInclude Include="onenotelib_global.h" />
     <ClInclude Include="OneNoteLib.h" />
+    <ClCompile Include="HtmlElement.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="OneNoteFactory.cpp" />
     <ClCompile Include="OneNoteLib.cpp" />
+    <ClInclude Include="Text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

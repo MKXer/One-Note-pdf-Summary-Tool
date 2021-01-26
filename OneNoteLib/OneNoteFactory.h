@@ -1,39 +1,23 @@
 #pragma once
-#include <QString>
-#include <QDebug>
-#include "OneNoteElement.h"
+#include "Headline.h"
+#include "Image.h"
+#include "ImportantText.h"
 
 namespace OneNote
 {
 	class Factory
 	{
+
 	public:
+		std::unique_ptr<HtmlElement> h1(QString const& text) const;
+		std::unique_ptr<HtmlElement> h2(QString const& text) const;
+		std::unique_ptr<HtmlElement> h3(QString const& text) const;
 
-		std::unique_ptr<HtmlElement> h1(QString const& text) const
-		{
-			return std::make_unique<H1>(text);
-		}
+		std::unique_ptr<HtmlElement> image(QString const& imagePath, ushort width, ushort height) const;
 
-		std::unique_ptr<HtmlElement> h2(QString const& text) const
-		{
-			return std::make_unique<H2>(text);
-		}
+		std::unique_ptr<HtmlElement> importantText(QString const& text) const;
 
-		std::unique_ptr<HtmlElement> h3(QString const& text) const
-		{
-			return std::make_unique<H3>(text);
-		}
-
-		std::unique_ptr<HtmlElement> importantText(QString const& text) const
-		{
-			return std::make_unique<ImportantText>(text);
-		}
-
-		static Factory const& factory()
-		{
-			static Factory factory;
-			return factory;
-		}
+		static Factory const& factory();
 
 	private:
 		Factory()

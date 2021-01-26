@@ -12,9 +12,7 @@ public:
 
 	explicit SourceHighlighter();
 
-	QString highlight(QString const& codeSnippet, QString const& lang) const;
-
-
+	const QString highlight(QString const& codeSnippet, QString const& lang) const;
 
 private:
 	mutable QProcess consoleApp;
