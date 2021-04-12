@@ -1,31 +1,36 @@
 #include "Sentence.h"
 
 
+Sentence::Sentence() : SummaryElement("", SummaryElement::Type::SENTENCE)
+{
+
+}
+
+
 Sentence& Sentence::operator<<(QString const& textSegment)
 {
 	QString trimmedSegment = textSegment.trimmed();
+	QString sentence = getData();
 
-	if (data.endsWith("-")) {
-		data = data.left(data.size() - 1);
-		data += trimmedSegment;
+	if (sentence.endsWith("-")) {
+		sentence = sentence.left(sentence.size() - 1);
+		sentence += trimmedSegment;
 	}
 	else
 	{
-		data += " ";
-		data += trimmedSegment;
-		data.replace("  ", " ");
+		sentence += " ";
+		sentence += trimmedSegment;
+		sentence.replace("  ", " ");
 	}
 
+	this->changeData(sentence);
 
 	return *this;
 }
 
 bool Sentence::isComplete() const
 {
-	return data.endsWith(".") || data.endsWith("«");
+	return getData().endsWith(".") || getData().endsWith("«");
 }
 
-Sentence::operator QString const& () {
-	return data;
-}
 

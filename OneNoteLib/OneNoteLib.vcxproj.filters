@@ -56,6 +56,9 @@
     <ClInclude Include="ImportantText.h">
       <Filter>Header Files\FactoryElement</Filter>
     </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Header Files\FactoryElement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OneNoteFactory.cpp">
@@ -74,6 +77,9 @@
       <Filter>Source Files\FactoryElements</Filter>
     </ClCompile>
     <ClCompile Include="ImportantText.cpp">
+      <Filter>Source Files\FactoryElements</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
       <Filter>Source Files\FactoryElements</Filter>
     </ClCompile>
   </ItemGroup>

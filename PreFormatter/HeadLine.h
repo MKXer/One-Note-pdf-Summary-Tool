@@ -9,9 +9,8 @@ public:
 
 
 	ushort getHeight() const;
-	operator QString const& ();
+
 
 private:
-	const QString data;
 	const double height;
 };

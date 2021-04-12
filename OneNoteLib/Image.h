@@ -1,5 +1,6 @@
 #pragma once
 #include "HtmlElement.h"
+#include <QSize>
 
 namespace OneNote
 {
@@ -7,7 +8,7 @@ namespace OneNote
 	class Image : public HtmlElement
 	{
 	public:
-		Image(QString const& imagePath, ushort width, ushort height);
+		Image(QString const& imagePath, QSize const& size);
 
 		const QString getHtml() const;
 
@@ -16,8 +17,7 @@ namespace OneNote
 		virtual QString const& getHtmlCode() const;
 
 		const QString imagePath;
-		const ushort width;
-		const ushort height;
+		const QSize imageSize;
 
 	};
 

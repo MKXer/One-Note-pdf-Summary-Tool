@@ -50,9 +50,6 @@ public:
 
 	ushort pageNumber() const;
 
-
-
-
 private:
 	const Type type;
 	const Data data;
@@ -81,14 +78,21 @@ public:
 	}
 	
 
-	bool isRegularText() const
-	{
+	bool isListItem() const {
+		return text.startsWith(bulletChar);
+	}
+
+	bool isRegularText() const {
 		return getHeight() < 14;
 	}
 
 
 private:
 	const QString text;
+
+	const QChar bulletChar{ 0x2022 };
+
+
 };
 
 
@@ -96,18 +100,25 @@ class Figure : public Annotation
 {
 
 public:
-	Figure(Annotation::Data const& anno, QImage const& figure) :
+	Figure(Annotation::Data const& anno, QString const& filePath, QSize const& imageSize) :
 		Annotation(Annotation::Type::FIGURE, anno),
-		figure(figure)
+		filePath(filePath),
+		imageSize(imageSize)
 	{
 
 	}
 
-	operator QImage const& () const
-	{
-		return figure;
+	QString const& getFilePath() const {
+		return filePath;
+	}
+
+
+	QSize const& getSize() const{
+		return imageSize;
 	}
 
 private:
-	const QImage figure;
+	
+	const QString filePath;
+	const QSize imageSize;
 };

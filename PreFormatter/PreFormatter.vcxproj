@@ -43,6 +43,8 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <LibraryPath>$(ProjectDir)poppler\lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\OneNoteLib;$(ProjectDir)poppler\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <IncludePath>$(ProjectDir)..\OneNoteLib;$(ProjectDir)poppler\src;$(IncludePath)</IncludePath>
@@ -52,6 +54,9 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>poppler-qt6.lib;$(Qt_LIBS_);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -105,6 +110,7 @@
     <ClCompile Include="AnnotationExtractor.cpp" />
     <ClCompile Include="HeadLine.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="Sentence.cpp" />
     <ClCompile Include="Summary.cpp" />
     <ClCompile Include="SummaryCreator.cpp" />
@@ -130,6 +136,7 @@
     <ClInclude Include="AnnotationList.h" />
     <ClInclude Include="HeadLine.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="Sentence.h" />
     <ClInclude Include="Summary.h" />
     <ClInclude Include="SummaryCreator.h" />

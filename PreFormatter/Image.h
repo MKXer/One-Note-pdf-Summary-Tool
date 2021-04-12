@@ -5,18 +5,18 @@
 class Image : public SummaryElement
 {
 public:
-	Image(QImage const& image) :
-		data(image)
+	Image(QString const& imagePath, QSize const& imageSize) :
+		SummaryElement(imagePath, SummaryElement::Type::IMAGE),
+		imageSize(imageSize)
 	{
 
 	}
 
-	operator QImage const& () {
-		return data;
+
+	QSize const& getSize() const {
+		return imageSize;
 	}
 
-
 private:
-	const QImage data;
-
+	const QSize imageSize;
 };

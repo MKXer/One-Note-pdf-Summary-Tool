@@ -2,16 +2,15 @@
 
 namespace OneNote
 {
-	Image::Image(QString const& imagePath, ushort width, ushort height) : HtmlElement(),
+	Image::Image(QString const& imagePath, QSize const& imageSize) : HtmlElement(),
 			imagePath(imagePath),
-			width(width),
-			height(height)
+			imageSize(imageSize)
 	{
 
 	}
 
 	const QString Image::getHtml() const {
-		return getHtmlCode().arg(imagePath).arg(width).arg(height);
+		return getHtmlCode().arg(imagePath).arg(imageSize.width()).arg(imageSize.height());
 	}
 
 	QString const& Image::getHtmlCode() const {

@@ -14,7 +14,7 @@ class AnnotationExtractor
 {
 
 public:
-	AnnotationExtractor(const Poppler::Document* file);
+	AnnotationExtractor(const Poppler::Document* file, QString const& figurePath);
 	AnnotationList extract();
 
 
@@ -28,16 +28,22 @@ protected:
 private:
 	bool isItAPossiblePageNumber(int pageNumber) const;
 
-	const QImage extractRectangleFromPage(Page const& page, const QRectF& rect) const;
-	Annotation* extractFigure(Page const& page, Poppler::Annotation* figureAnnotation) const;
+	const QImage		 extractRectangleFromPage(Page const& page, const QRectF& rect) const;
+	const AnnotationList extractHighligtedText	 (Page const& page, Poppler::Annotation* textAnnotation)   const;
+		  Annotation*	 extractFigure			 (Page const& page, Poppler::Annotation* figureAnnotation) const;
 
-	const AnnotationList extractHighligtedText(Page const& page, Poppler::Annotation* textAnnotation) const;
+	void increaseFigureCountByOne() const;
 
-
+private:
 	const Poppler::Document* pdfFile;
-
 	const ushort numberOfPages;
+
+	const QString figuresPath;
+	mutable ushort figureCount = 0;
+
 	const AnnotationFactory& factory = AnnotationFactory::factory();
+
+
 };
 
 

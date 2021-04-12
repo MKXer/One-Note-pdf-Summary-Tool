@@ -2,19 +2,15 @@
 #include <QList>
 #include "SummaryElement.h"
 
-class Summary
+class Summary : protected QList<SummaryElement*>
 {
 public:
 
 	Summary() = default;
 
-	Summary& operator<<(SummaryElement* element);
-
-
-	void saveToFile(QString const& filepath);
-
-
-
+	using QList<SummaryElement*>::operator<<;
+	using QList<SummaryElement*>::begin;
+	using QList<SummaryElement*>::end;
 
 private:
 	QList<SummaryElement*> summary;

@@ -2,6 +2,17 @@
 
 namespace OneNote
 {
+
+	std::unique_ptr<HtmlElement> Factory::text(QString const& text, ushort fontSize ) const
+	{
+		return std::make_unique<Text>(text, "p", fontSize);
+	}
+
+	std::unique_ptr<OneNote::HtmlElement> Factory::list(QString const& list, ushort fontSize /*= 11*/) const
+	{
+		return std::make_unique<List>(list,  fontSize);
+	}
+
 	std::unique_ptr<HtmlElement> Factory::h1(QString const& text) const
 	{
 		return std::make_unique<H1>(text);
@@ -17,14 +28,19 @@ namespace OneNote
 		return std::make_unique<H3>(text);
 	}
 
-	std::unique_ptr<OneNote::HtmlElement> Factory::image(QString const& imagePath, ushort width, ushort height) const
+	std::unique_ptr<OneNote::HtmlElement> Factory::image(QString const& imagePath, QSize const& size) const
 	{
-		return std::make_unique<Image>(imagePath,  width,  height);
+		return std::make_unique<Image>(imagePath, size);
 	}
 
 	std::unique_ptr<HtmlElement> Factory::importantText(QString const& text) const
 	{
 		return std::make_unique<ImportantText>(text);
+	}
+
+	std::unique_ptr<HtmlElement> Factory::newLines(uchar count) const
+	{
+		return std::make_unique<NewLines>(count);
 	}
 
 	Factory const& Factory::factory()

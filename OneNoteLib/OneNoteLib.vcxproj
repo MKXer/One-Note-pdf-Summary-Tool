@@ -101,11 +101,13 @@
   <ItemGroup>
     <ClCompile Include="Headline.cpp" />
     <ClCompile Include="ImportantText.cpp" />
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClInclude Include="Headline.h" />
     <ClInclude Include="HtmlElement.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImportantText.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="OneNoteFactory.h" />
     <ClInclude Include="onenotelib_global.h" />
     <ClInclude Include="OneNoteLib.h" />

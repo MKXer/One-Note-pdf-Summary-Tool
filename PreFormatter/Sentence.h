@@ -6,15 +6,14 @@
 class Sentence : public SummaryElement
 {
 public:
-	Sentence() = default;
+	Sentence();
 
 	Sentence& operator<<(QString const& textSegment);
 
 	bool isComplete() const;
 
-	operator QString const& ();
+
 
 private:
-	QString data = "";
 
 };

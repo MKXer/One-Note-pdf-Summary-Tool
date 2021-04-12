@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_PreFormatter.h"
+#include <QFileDialog>
 
 class PreFormatter : public QMainWindow
 {
@@ -9,6 +10,12 @@ class PreFormatter : public QMainWindow
 
 public:
     PreFormatter(QWidget *parent = Q_NULLPTR);
+
+
+    void extract();
+    const QString openFileDialog();
+    const QString chooseFile();
+
 
 private:
     Ui::PreFormatterClass ui;

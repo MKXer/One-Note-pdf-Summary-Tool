@@ -2,7 +2,7 @@
 
 
 HeadLine::HeadLine(QString const& headline, double height) :
-	data(headline),
+	SummaryElement(headline, SummaryElement::Type::HEADLINE),
 	height(height)
 {
 
@@ -11,9 +11,5 @@ HeadLine::HeadLine(QString const& headline, double height) :
 ushort HeadLine::getHeight() const
 {
 	return height;
-}
-
-HeadLine::operator QString const& () {
-	return data;
 }
 

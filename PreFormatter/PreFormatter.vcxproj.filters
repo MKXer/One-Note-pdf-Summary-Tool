@@ -89,6 +89,9 @@
     <ClCompile Include="SummaryElement.cpp">
       <Filter>Source Files\Summary\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>Source Files\Summary\Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Annotation.h">
@@ -119,6 +122,9 @@
       <Filter>Header Files\Summary\Elements</Filter>
     </ClInclude>
     <ClInclude Include="SummaryElement.h">
+      <Filter>Header Files\Summary\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
       <Filter>Header Files\Summary\Elements</Filter>
     </ClInclude>
   </ItemGroup>

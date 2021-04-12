@@ -2,3 +2,7 @@
 
 
 
+const QString& SummaryElement::getData() const
+{
+	return data;
+}

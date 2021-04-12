@@ -17,9 +17,9 @@ public:
 // 		return std::make_unique<Headline>();
 // 	}
 // 
-	Annotation* figure(Annotation::Data const& anno, QImage const& figure) const
+	Annotation* figure(Annotation::Data const& anno, QString const& filePath, QSize const& imageSize ) const
 	{
-		return new Figure(anno, figure);
+		return new Figure(anno, filePath, imageSize);
 	}
 // 
 // 	std::unique_ptr<Annotation> sourceCode() const
@@ -32,6 +32,10 @@ public:
 		static AnnotationFactory factory;
 		return factory;
 	}
+
+
+private:
+
 
 
 };

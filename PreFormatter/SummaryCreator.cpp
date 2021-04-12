@@ -19,6 +19,28 @@ TextSegment* SummaryCreator::getRegularText(Annotation* const annotation) const
 	return regularText;
 }
 
+List* SummaryCreator::collectList(int& startIndex) const
+{
+	List* list = new List;
+	bool shouldCollect = true;
+
+	for (; shouldCollect && startIndex < annotationList.size(); ++startIndex)
+	{
+		Annotation* const annotation = annotationList.at(startIndex);
+
+		if (auto textAnnotation = getRegularText(annotation);
+			shouldCollect = (textAnnotation && textAnnotation->isListItem()) ) {
+
+			const auto textSegment = textAnnotation->getText();
+			*list << textSegment;
+
+		}
+	}
+	startIndex--;
+
+	return list;
+}
+
 
 Sentence* SummaryCreator::collectSentence(int& startIndex) const
 {
@@ -36,13 +58,15 @@ Sentence* SummaryCreator::collectSentence(int& startIndex) const
 
 			*newSentence << textSegment;
 
+			
 			shouldCollect = !newSentence->isComplete();
+		
 		}
 		else {
 			startIndex--;
 		}
 	}
-
+	startIndex--;
 	return newSentence;
 }
 
@@ -63,9 +87,15 @@ Summary SummaryCreator::generateSummary() const
 		SummaryElement* element = nullptr;
 
 		if (annotation->isText()) {
+			
 			const auto textSegment = static_cast<TextSegment*>(annotation);
+	
 
-			if (textSegment->isRegularText()) {
+			if (textSegment->isListItem())
+			{
+				element = collectList(i);
+			}
+			else if (textSegment->isRegularText()) {
 				element = collectSentence(i);
 			}
 			else {
@@ -74,8 +104,11 @@ Summary SummaryCreator::generateSummary() const
 		}
 		else if (annotation->isFigure()) {
 			const auto figure = static_cast<Figure*>(annotation);
-			element = new Image{ *figure };
 
+			element = new Image{ figure->getFilePath(), figure->getSize() };
+
+
+			
 		}
 		retn << element;
 	}
