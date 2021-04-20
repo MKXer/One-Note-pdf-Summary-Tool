@@ -8,10 +8,7 @@ https://github.com/elvirbrk/NoteHighlight2016
 
 So i created a better code formatting tool for dark mode OneNote code snippets.
 
-Manual formatter to format code snippets and headlines.
-
 ![alt text](https://github.com/MKXer/One-Note-pdf-Summary-Tool/blob/91abc03cb95a78cc0aa5b6168241805672892598/code.png)
-
 
 
 
