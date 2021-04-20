@@ -1,4 +1,4 @@
-# BookSummaryTools
+# Qt - cpp BookSummaryTools
 tools to simplify creation of pdf book summaries in OneNote
 
 
