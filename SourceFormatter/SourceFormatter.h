@@ -42,7 +42,7 @@ private:
     const SourceHighlighter highlighter;
     const SourceBeautifier beautifier;
 
-    bool shouldWatchClipboard = true;
+    bool shouldWatchClipboard = false;
 
 	const QHash<CodeLanguage, QString> astyleLangOptions = {
 			{JAVA,	 "java"},

@@ -5,6 +5,8 @@ SourceFormatter::SourceFormatter(QWidget *parent)
 {
     ui.setupUi(this);
 
+
+	switchClipboardWatcherState();
 	connect(ui.CLIPBOARD_BTN, &QPushButton::clicked,   this, &SourceFormatter::switchClipboardWatcherState);
 	connect(clipboard,		 &QClipboard::dataChanged, this, &SourceFormatter::checkForNewCodeAndFormatIt );
 }
