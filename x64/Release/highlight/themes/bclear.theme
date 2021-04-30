@@ -1,0 +1,24 @@
+
+Description = "vim bclear"
+
+Default	= { Colour="#00FFFF" }
+Text	= { Colour="#00FFFF" }
+Canvas	= { Colour="#ffffff" } -- background color keep it white
+Number	= { Colour="#FFEE00" }
+Escape	= { Colour="#00FFFF" }
+String	= { Colour="#00FFFF" }
+BlockComment	= { Colour="#bdb76b" , Italic=true }
+StringPreProc = String
+LineComment   = BlockComment
+Operator      = Default
+LineNum      = BlockComment
+PreProcessor      = { Colour="#FF6600" }
+Interpolation  = { Colour="#112E47" }
+
+Keywords = {
+  { Colour="#FFFF00", Bold=true }, -- e.g. return using namespace see lang- file
+  { Colour="#00FFFF" }, --datatype
+    { Colour="#00AA00" },--class, public, Object name
+  { Colour="#99FF00" }, -- method name, 
+
+}
