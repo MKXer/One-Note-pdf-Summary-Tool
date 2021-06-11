@@ -16,8 +16,12 @@ So i created a better code formatting tool for dark mode OneNote code snippets.
 
 Just highlight your text and draw a rect over your images in your pdf files and the tool will extract it to onenote
 
+Input 
+
 ![grafik](https://user-images.githubusercontent.com/48217414/121752241-017fcc80-cb10-11eb-83f4-ba0427f75229.png)
 
+
+Output
 
 ![grafik](https://user-images.githubusercontent.com/48217414/121752231-faf15500-cb0f-11eb-8ea9-00e82370c8f1.png)
 
